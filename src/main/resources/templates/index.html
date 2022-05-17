@@ -1,0 +1,31 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Главная Страница</title>
+
+    <div th:replace="fragments/header::header-css"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header:: header"></div>
+<br><br><br><br><br><br>
+
+<div class="container mt-5">
+    <div class="starter-template">
+
+        <h2>1. Посетите <a th:href="@{/admin}">страницу Admin </a></h2>
+        <h2>2. Посетите </h2>
+        <h2>3. Посетите <a th:href="@{/test}">страницу Тестирования </a></h2>
+
+    </div>
+
+</div>
+
+<!-- /.container -->
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</body>
+</html>

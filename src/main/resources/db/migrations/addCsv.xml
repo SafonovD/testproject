@@ -1,0 +1,48 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="Create-table-answers" author="Dmitry.Safonov">
+        <createTable tableName="answers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="answer_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="correct_answer_of_question" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="questions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.1-Create-table-questions" author="Dmitry.Safonov" >
+        <createTable tableName="questions">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="question_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.3-addForeignKeyConstraintQuestions" author="Dmitry.Safonov">
+        <addForeignKeyConstraint baseColumnNames="questions_id"
+                                 baseTableName="answers"
+                                 constraintName="fk_questions_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="questions"/>
+    </changeSet>
+</databaseChangeLog>

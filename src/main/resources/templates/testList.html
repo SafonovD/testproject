@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Тесты</title>
+
+    <div th:replace="fragments/header::header-css"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header:: header"></div>
+<br><br><br><br>
+
+<div class="container-fluid text-center" th:if="${not #lists.isEmpty(questions)}">
+    <h2>Тесты</h2>
+
+
+<div class="m-md-n4">
+<!--        <tr th:each="quest : ${questions}">-->
+<!--            <td th:text="${quest.name}" class="custom-control-inline"></td>-->
+
+<!--            <td class="custom-control-inline">-->
+<!--                <div th:each="answ : ${quest.answersList}" class="custom-control-inline">-->
+<!--                    <div class="custom-control custom-checkbox custom-control-inline">-->
+<!--                        <input type="checkbox" class="custom-control-input" id="customCheck">-->
+<!--                        <label class="custom-control-inline" th:utext="${answ.name}" for="customCheck"></label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+        <form class="quiz" id="" method="post" th:action="@{/test/start}">
+
+            <div class="questionAnswers" th:each="quest : ${questions}" id="q">
+                <label name="ques" th:value="${quest.id}" th:text="${quest.name}" for="q"></label>
+
+                <ul th:each="answ : ${quest.answersList}">
+                    <li><input type="radio" th:id="${answ.id}" name="ans" th:value="${answ.name}" th:text="${answ.name}" class="custom-control-input"></li>
+                </ul>
+
+                <div class="errordiv">Выберите ответ!</div>
+            </div>
+
+            <input type="submit" name="submit" value="Следующий">
+        </form>
+</div>
+
+</div>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
+</body>
+</html>
+
+<!--<div id="question-panel" style="display: none" th:each="quest : ${questions}">-->
+<!--    <span id="question" > вопрос </span>-->
+<!--    <span id="question_text" th:text="${quest.name}"> </span>-->
+<!--    -->
+<!--    <span id="question_answer">-->
+<!--    <label for="ch">-->
+<!--        <div class="input-group">-->
+<!--            <input type="radio" name="answer" id="ch">-->
+<!--            <label for="ch">  ответ </label>-->
+<!--        </div>-->
+<!--    </label>-->
+<!--    </span>-->
+
+<!--    <div id="nextQuestion" class="bottom" style="display: block">-->
+<!--        Дальше-->
+<!--    </div>-->
+<!--</div>-->
+<!--<span id="result" class="red-block">  вы ответили и тд... вопросов </span>-->

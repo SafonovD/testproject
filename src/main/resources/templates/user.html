@@ -1,0 +1,29 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Страница пользователя</title>
+
+    <div th:replace="fragments/header::header-css"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header:: header"></div>
+<br><br><br><br><br><br>
+
+<div class="container mt-5">
+    <div class="starter-template">
+        <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
+        <h2>1. Посетите <a th:href="@{/admin}">страницу Admin </a></h2>
+        <h2>2. Посетите <a th:href="@{/user}">страницу User </a></h2>
+    </div>
+
+</div>
+
+<!-- /.container -->
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
+
+</body>
+</html>
